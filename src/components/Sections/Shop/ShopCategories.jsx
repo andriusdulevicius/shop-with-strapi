@@ -1,6 +1,5 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import css from './ShopCategories.module.css';
+import useHttp from '../../../hooks/use-http';
 
 function stringToUrl(string) {
   let result = string.replace(' ', '-');
@@ -14,23 +13,7 @@ export default function ShopCategories() {
   // 1.axios fetch
   // 2. state
   // 3. useEffect
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    // IIFE
-    (async () => {
-      try {
-        const { data } = await axios.get(
-          'https://fakestoreapi.com/products/categories'
-        );
-        // console.log(data);
-        if (!data) throw new Error('No data came back from reques');
-        setCategories(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    })();
-  }, []);
+  const categories = useHttp('products/categories');
 
   return (
     <aside className={css.cat}>

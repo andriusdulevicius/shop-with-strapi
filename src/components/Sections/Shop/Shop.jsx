@@ -3,6 +3,7 @@ import ShopCategories from './ShopCategories';
 import ShopItem from './ShopItem';
 
 export default function Shop() {
+  // useHttp hook
   return (
     <section className={`container ${css.shop}`}>
       <ShopCategories />
