@@ -1,6 +1,6 @@
 import css from './Hero.module.css';
-import Button from './UI/Button';
-import Icon from './UI/Icon';
+import Button from '../UI/Button';
+import Icon from '../UI/Icon';
 
 const social = [
   {
