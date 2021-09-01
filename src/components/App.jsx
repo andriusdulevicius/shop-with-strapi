@@ -5,7 +5,7 @@ import Hero from './Sections/Hero';
 function App() {
   return (
     <div className='App'>
-      <Header />
+      {/* <Header /> */}
       <Hero />
     </div>
   );

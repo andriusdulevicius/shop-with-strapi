@@ -1,0 +1,19 @@
+.hero {
+  background-image: url('https://picsum.photos/id/1062/1200/800');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  color: snow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.center-part {
+  text-align: center;
+}
+.center-part h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
