@@ -17,12 +17,18 @@ export default function ShopCategories() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    // IIFE
     (async () => {
-      const { data } = await axios.get(
-        'https://fakestoreapi.com/products/categories'
-      );
-      // console.log(data);
-      setCategories(data);
+      try {
+        const { data } = await axios.get(
+          'https://fakestoreapi.com/products/categories'
+        );
+        // console.log(data);
+        if (!data) throw new Error('No data came back from reques');
+        setCategories(data);
+      } catch (error) {
+        console.log(error.message);
+      }
     })();
   }, []);
 
