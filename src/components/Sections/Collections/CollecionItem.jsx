@@ -1,5 +1,5 @@
 import css from './CollecionItem.module.css';
-import Button from './UI/Button';
+import Button from '../../UI/Button';
 
 export default function CollecionItem({ item }) {
   console.log(item.image);
