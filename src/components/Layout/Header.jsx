@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header className={css.header}>
       <a className={css.logo} href='/'>
-        CanvasStore
+        Canvas<strong>Store</strong>
       </a>
       <nav className={css['main-nav']}>
         {Links.map((l) => (
