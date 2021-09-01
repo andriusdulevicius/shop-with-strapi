@@ -30,7 +30,12 @@ const collectionsData = [
 export default function Collections() {
   return (
     <section className='container'>
-      <CollecionItem item={collectionsData[0]} />
+      <h2>TItle</h2>
+      <div className={css['card-container']}>
+        {collectionsData.map((it) => (
+          <CollecionItem key={it.id} item={it} />
+        ))}
+      </div>
     </section>
   );
 }
