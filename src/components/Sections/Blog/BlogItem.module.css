@@ -1,0 +1,16 @@
+.blog-item {
+}
+.blog-item img {
+  margin-bottom: 1rem;
+}
+.blog-item h3 {
+  margin-bottom: 1rem;
+}
+.blog-item p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+.blog-item a {
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}

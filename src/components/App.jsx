@@ -3,7 +3,8 @@ import 'font-awesome/css/font-awesome.css';
 // import Header from './Layout/Header';
 // import Hero from './Sections/Hero';
 // import Collections from './Sections/Collections/Collections';
-import Shop from './Sections/Shop/Shop';
+// import Shop from './Sections/Shop/Shop';
+import Blog from './Sections/Blog/Blog';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* <Header /> */}
       {/* <Hero /> */}
       {/* <Collections /> */}
-      <Shop />
+      {/* <Shop /> */}
+      <Blog />
     </div>
   );
 }
