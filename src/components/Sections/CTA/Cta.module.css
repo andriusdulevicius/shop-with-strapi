@@ -1,0 +1,22 @@
+.cta {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: gray;
+}
+
+.center {
+  max-width: 600px;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+}
+
+.center h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.center p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}

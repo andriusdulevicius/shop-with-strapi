@@ -4,7 +4,8 @@ import 'font-awesome/css/font-awesome.css';
 // import Hero from './Sections/Hero';
 // import Collections from './Sections/Collections/Collections';
 // import Shop from './Sections/Shop/Shop';
-import Blog from './Sections/Blog/Blog';
+// import Blog from './Sections/Blog/Blog';
+import Cta from './Sections/CTA/Cta';
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       {/* <Hero /> */}
       {/* <Collections /> */}
       {/* <Shop /> */}
-      <Blog />
-      {/* <CTA title='Sub now'  /> */}
+      {/* <Blog /> */}
+      <Cta title='Sub now' />
     </div>
   );
 }
