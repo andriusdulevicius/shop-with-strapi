@@ -1,5 +1,5 @@
 import css from './ShopCategories.module.css';
-import useHttp from '../../../hooks/use-http';
+import useHttp from '../../../hooks/useHttp';
 
 function stringToUrl(string) {
   let result = string.replace(' ', '-');

@@ -1,0 +1,26 @@
+.item {
+  max-width: 30%;
+  text-align: center;
+}
+.item img {
+  border: 1px solid #000;
+}
+.item button {
+  /* 100% - 20px */
+  width: calc(100% - 20px);
+  position: relative;
+  top: -50px;
+}
+.info {
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.info h5 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+.info h5:first-of-type {
+  width: 80%;
+}
