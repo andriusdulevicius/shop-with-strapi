@@ -1,5 +1,6 @@
 import css from './ShopCategories.module.css';
 import useHttp from '../../../hooks/useHttp';
+import { useEffect, useRef } from 'react';
 
 function stringToUrl(string) {
   let result = string.replace(' ', '-');
@@ -10,13 +11,24 @@ function stringToUrl(string) {
 // stringToUrl("some's stuff");
 
 export default function ShopCategories() {
-  // 1.axios fetch
-  // 2. state
-  // 3. useEffect
+  const asideRef = useRef();
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      console.log(asideRef.current.getBoundingClientRect().top);
+    }, 2000);
+    return () => {
+      clearInterval(timeout);
+    };
+  });
+  // gauti aside el atstuma iki lango virsaus getBoundingClientRect().top;
+  // kai aside apacia, liecia header virsu norim uzdeti klase active
+  // kuri padaro aside fixed
+  // kai aside apacia pasieka blog el virsu, nuimam active clase
+
   const categories = useHttp('products/categories');
 
   return (
-    <aside className={css.cat}>
+    <aside className={css.cat} ref={asideRef}>
       <a href='/shop/categories/all'>
         <strong> All Collections</strong>
       </a>
