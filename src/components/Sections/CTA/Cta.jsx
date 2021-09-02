@@ -1,4 +1,5 @@
 import css from './Cta.module.css';
+import Form from './Form';
 
 export default function Cta() {
   return (
@@ -9,7 +10,7 @@ export default function Cta() {
           Subscribe to Our Newsletter to get Important News, <br /> Amazing
           Offers and Inside Scoops:
         </p>
-        <h5>Form</h5>
+        <Form />
       </div>
     </section>
   );
