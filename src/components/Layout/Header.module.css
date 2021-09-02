@@ -16,6 +16,10 @@
   background-color: white;
   color: #333;
 }
+.active {
+  background-color: white;
+  color: #333;
+}
 
 .logo {
   font-size: 1.4rem;
