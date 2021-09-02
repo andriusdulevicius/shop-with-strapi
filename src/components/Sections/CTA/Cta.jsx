@@ -28,17 +28,6 @@ function Cta({ bg, title, subtitle }) {
   );
 }
 
-// susikuriam sekcija
-
-// prididedam kontenta
-
-// sukuriam forma, forma persiuncia isvestus nuomenis i teveini el
-
-// pridedam forma
-
-// padarom kad CTA butu pernaudojamas komponentas kuris pasiima tittle, subtitle ir is jo gaunam ivesta input
-
-// default props
 Cta.defaultProps = {
   title: 'Subscribe Now',
   subtitle:
