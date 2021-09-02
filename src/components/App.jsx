@@ -14,6 +14,7 @@ function App() {
       {/* <Collections /> */}
       {/* <Shop /> */}
       <Blog />
+      {/* <CTA title='Sub now'  /> */}
     </div>
   );
 }
