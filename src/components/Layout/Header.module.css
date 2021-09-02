@@ -1,4 +1,8 @@
 .header {
+  position: fixed;
+  width: calc(100% - 3rem);
+  left: 1.5rem;
+  top: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,7 +10,7 @@
   color: snow;
   background-color: transparent;
   transition: all 0.3s ease-out;
-  margin-top: 0.6rem;
+  z-index: 9;
 }
 .header:hover {
   background-color: white;
