@@ -2,3 +2,8 @@
   display: flex;
   gap: 2rem;
 }
+.shop main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}

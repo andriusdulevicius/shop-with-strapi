@@ -4,8 +4,11 @@ import Button from '../../UI/Button';
 export default function ShopItem({ item }) {
   return (
     <article className={css.item}>
-      <img src={item.image} alt={item.title} />
-      <Button>+ ADD TO CART</Button>
+      <div className={css['img-container']}>
+        <img src={item.image} alt={item.title} />
+        <Button>+ ADD TO CART</Button>
+      </div>
+
       <div className={css.info}>
         <h5>{item.title}</h5>
         <h5>{item.price}</h5>
