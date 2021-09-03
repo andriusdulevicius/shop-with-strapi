@@ -1,12 +1,13 @@
 import '../style/App.css';
 import 'font-awesome/css/font-awesome.css';
-import Hero from './Sections/Hero';
-import Collections from './Sections/Collections/Collections';
-import Shop from './Sections/Shop/Shop';
-import Blog from './Sections/Blog/Blog';
-import Cta from './Sections/CTA/Cta';
+// import Hero from './Sections/Hero';
+// import Collections from './Sections/Collections/Collections';
+// import Shop from './Sections/Shop/Shop';
+// import Blog from './Sections/Blog/Blog';
+// import Cta from './Sections/CTA/Cta';
 import Layout from './Layout/Layout';
 import { useRef, useEffect, useState } from 'react';
+import Shipping from './Sections/Shipping/Shipping';
 
 function App() {
   const blogRef = useRef();
@@ -56,12 +57,13 @@ function App() {
 
   return (
     <Layout>
-      <button onClick={btnHandler}>Get ref</button>
+      {/* 
       <Hero />
       <Collections />
       <Shop asideStick={asideStick} ref={asideRef} />
       <Blog ref={blogRef} />
-      <Cta />
+      <Cta /> */}
+      <Shipping />
     </Layout>
   );
 }
