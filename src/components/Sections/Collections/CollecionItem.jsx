@@ -2,7 +2,7 @@ import css from './CollecionItem.module.css';
 import Button from '../../UI/Button';
 
 export default function CollecionItem({ item }) {
-  console.log(item.image);
+  // console.log(item.image);
   const style = { background: `url(${item.image})` };
   return (
     <div className={css.card} style={style}>

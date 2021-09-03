@@ -29,17 +29,23 @@ function App() {
     console.log({ asideBottomDistance });
     console.log({ blogTopDistance });
 
+    // normali busena
+    // aside sicky
+    // nuimti nuo aside stiky esant zemiau
+
     if (asideTopDistance < 85) {
       console.log('stick');
+
+      if (asideBottomDistance > blogTopDistance) {
+        console.log('aside bottom reach NOT');
+        setAsideStick(false);
+        return;
+      }
+
       setAsideStick(true);
-    } else if (asideBottomDistance > blogTopDistance) {
+    } else {
       // console.log('stick NOT');
       // setAsideStick(false);
-    } else {
-    }
-    if (asideBottomDistance > blogTopDistance) {
-      console.log('stick NOT');
-      setAsideStick(false);
     }
   }
 
