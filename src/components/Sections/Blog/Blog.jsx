@@ -1,3 +1,4 @@
+import React from 'react';
 import css from './Blog.module.css';
 import BlogItem from './BlogItem';
 
@@ -22,17 +23,16 @@ const blogs = [
     address: '795 Folsom Ave, Suite 600 San Francisco, CA 94107',
   },
 ];
+// forwardingRef - naudojama kai reikia perduoti DOM nuoroda SUkurtam komponetui
+const Blog = React.forwardRef((props, ref) => (
+  <section ref={ref} className={`container ${css.blog}`}>
+    {blogs.map((b) => (
+      <BlogItem key={b.id} blog={b} />
+    ))}
+  </section>
+));
 
-export default function Blog() {
-  return (
-    <section className={`container ${css.blog}`}>
-      {blogs.map((b) => (
-        <BlogItem key={b.id} blog={b} />
-      ))}
-    </section>
-  );
-}
-
+export default Blog;
 // sukiam sekcija Blog
 
 // Sukuriam BlogItem pagal dizaina
