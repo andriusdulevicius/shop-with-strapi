@@ -1,6 +1,8 @@
+import React from 'react';
 import css from './ShopCategories.module.css';
 import useHttp from '../../../hooks/useHttp';
 import { useEffect, useRef, useState } from 'react';
+import reactDom from 'react-dom';
 
 function stringToUrl(string) {
   let result = string.replace(' ', '-');
@@ -10,8 +12,8 @@ function stringToUrl(string) {
 
 // stringToUrl("some's stuff");
 
-export default function ShopCategories() {
-  const asideRef = useRef();
+const ShopCategories = React.forwardRef((props, asideRef) => {
+  // const asideRef = useRef();
   const [asideStick, setAsideStick] = useState(false);
 
   useEffect(() => {
@@ -62,6 +64,7 @@ export default function ShopCategories() {
       </aside>
     </>
   );
-}
+});
 
 // mobile atrddytu puikiai
+export default ShopCategories;

@@ -24,8 +24,8 @@ const blogs = [
   },
 ];
 // forwardingRef - naudojama kai reikia perduoti DOM nuoroda SUkurtam komponetui
-const Blog = React.forwardRef((props, ref) => (
-  <section ref={ref} className={`container ${css.blog}`}>
+const Blog = React.forwardRef((props, blogRef) => (
+  <section ref={blogRef} className={`container ${css.blog}`}>
     {blogs.map((b) => (
       <BlogItem key={b.id} blog={b} />
     ))}
