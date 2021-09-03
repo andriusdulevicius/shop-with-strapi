@@ -10,8 +10,11 @@ import { useRef } from 'react';
 
 function App() {
   const blogRef = useRef();
+  const asideRef = useRef();
+
   function btnHandler() {
-    console.log(blogRef.current.getBoundingClientRect().top);
+    console.log('blog top', blogRef.current.getBoundingClientRect().top);
+    console.log('aside', asideRef.current.getBoundingClientRect().top);
   }
 
   return (
@@ -19,7 +22,7 @@ function App() {
       <button onClick={btnHandler}>Get ref</button>
       <Hero />
       <Collections />
-      <Shop />
+      <Shop ref={asideRef} />
       <Blog ref={blogRef} />
       <Cta />
     </Layout>
