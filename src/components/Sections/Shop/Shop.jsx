@@ -11,7 +11,7 @@ const Shop = React.forwardRef((props, asideRef) => {
   // console.log(items);
   return (
     <section className={`container ${css.shop}`}>
-      <ShopCategories ref={asideRef} />
+      <ShopCategories asideStick={props.asideStick} ref={asideRef} />
       <main>
         {(firstNineItems || []).map((item) => (
           <ShopItem key={item.id} item={item} />

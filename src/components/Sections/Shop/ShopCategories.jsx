@@ -12,28 +12,8 @@ function stringToUrl(string) {
 
 // stringToUrl("some's stuff");
 
-const ShopCategories = React.forwardRef((props, asideRef) => {
+const ShopCategories = React.forwardRef(({ asideStick }, asideRef) => {
   // const asideRef = useRef();
-  const [asideStick, setAsideStick] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  function handleScroll() {
-    const asideTopDistance = asideRef.current.getBoundingClientRect().top;
-    // console.log({ asideTopDistance });
-    if (asideTopDistance < 85) {
-      console.log('stick');
-      setAsideStick(true);
-    } else {
-      console.log('stick NOT');
-      setAsideStick(false);
-    }
-  }
 
   // gauti aside el atstuma iki lango virsaus getBoundingClientRect().top;
   // kai aside apacia, liecia header virsu norim uzdeti klase active
