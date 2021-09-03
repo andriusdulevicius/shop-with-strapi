@@ -22,7 +22,7 @@ export default function Header() {
 
   function handleScroll(e) {
     const dist = window.pageYOffset;
-    console.log('scroll ', dist);
+    // console.log('scroll ', dist);
     if (dist > 200) {
       setNavState(true);
     } else {

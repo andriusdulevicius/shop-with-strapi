@@ -4,6 +4,11 @@
   gap: 0.6rem;
   min-width: 270px;
 }
+.stick {
+  position: fixed;
+  top: 84px;
+  z-index: 4;
+}
 .cat a {
   display: block;
   padding: 5px 5px;
