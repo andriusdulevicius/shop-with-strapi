@@ -1,17 +1,27 @@
 import css from './Header.module.css';
 import { useState, useEffect } from 'react';
-
-const Links = [
-  { link: '/', title: 'Home' },
-  { link: '/men', title: 'Men' },
-  { link: '/woman', title: 'Woman' },
-  { link: '/help', title: 'Help' },
-  { link: '/contact', title: 'Contact' },
-];
+import axios from 'axios';
 
 export default function Header() {
   // sekti ar dokumentas yra slenkamas zemyn
   const [navState, setNavState] = useState(false);
+  const [links, setLinks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      try {
+        const { data } = await axios.get(`${process.env.REACT_APP_STRAPI_URL}/canvas-menus`);
+        setLinks(data);
+      } catch (error) {
+        setError('Something went wrong');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -35,7 +45,7 @@ export default function Header() {
         Canvas<strong>Store</strong>
       </a>
       <nav className={css['main-nav']}>
-        {Links.map((l) => (
+        {links.map((l) => (
           <a key={l.link} href={l.link}>
             {l.title}
           </a>

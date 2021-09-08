@@ -51,8 +51,8 @@ const ShippingSection = styled.section`
 const Shipping = () => {
   return (
     <ShippingSection>
-      {ShippingArr.map((article) => (
-        <ShippingCol article={article} />
+      {ShippingArr.map((article, index) => (
+        <ShippingCol key={index} article={article} />
       ))}
     </ShippingSection>
   );

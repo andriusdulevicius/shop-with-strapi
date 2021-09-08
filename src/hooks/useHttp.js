@@ -10,7 +10,7 @@ export default function useHttp(url) {
       try {
         const { data } = await axios.get('https://fakestoreapi.com/' + url);
         // console.log(data);
-        if (!data) throw new Error('No data came back from reques');
+        if (!data) throw new Error('No data came back from request');
         setShopData(data);
       } catch (error) {
         console.log(error.message);

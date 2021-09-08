@@ -95,11 +95,11 @@ const ShippingCol = ({ article: { title, text, subtitle, contacts, stores, times
       )}
       {stores && (
         <Stores>
-          {stores.map((store) => (
-            <>
+          {stores.map((store, index) => (
+            <div key={index}>
               <Subtitle>{store.shopTitle}</Subtitle>
               <Text>{store.address}</Text>
-            </>
+            </div>
           ))}
           <span>
             <strong>Timing:</strong> {times}
