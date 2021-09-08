@@ -4,7 +4,6 @@ import useStrapi from '../../../hooks/useStrapi';
 
 export default function Collections() {
   const [collectionsData] = useStrapi('canvas-special-offers');
-  console.log(collectionsData);
   return (
     <section className='container'>
       <h2>TItle</h2>

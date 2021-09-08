@@ -16,7 +16,7 @@ function Cta({ bg, title, subtitle }) {
         muted
         poster='https://assets.codepen.io/6093409/river.jpg'
       >
-        <source src={bg} type='video/mp4' />
+        <source src={process.env.REACT_APP_STRAPI_URL + bg || bg} type='video/mp4' />
       </video>
 
       <div className={css.center}>
@@ -28,10 +28,9 @@ function Cta({ bg, title, subtitle }) {
   );
 }
 
-Cta.defaultProps = {
-  title: 'Subscribe Now',
-  subtitle:
-    'Subscribe to Our Newsletter to get Important News, Amazing Offers and Inside Scoops:',
-  bg: 'https://assets.codepen.io/6093409/river.mp4',
-};
+// Cta.defaultProps = {
+//   title: 'Subscribe Now',
+//   subtitle: 'Subscribe to Our Newsletter to get Important News, Amazing Offers and Inside Scoops:',
+//   bg: 'https://assets.codepen.io/6093409/river.mp4',
+// };
 export default Cta;

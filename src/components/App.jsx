@@ -8,12 +8,14 @@ import Cta from './Sections/CTA/Cta';
 import Layout from './Layout/Layout';
 import { useRef, useEffect, useState } from 'react';
 import Shipping from './Sections/Shipping/Shipping';
+import useStrapi from './../hooks/useStrapi';
 
 function App() {
   const blogRef = useRef();
   const asideRef = useRef();
 
   const [asideStick, setAsideStick] = useState(false);
+  const [ctaData] = useStrapi('canvas-cta');
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -26,9 +28,6 @@ function App() {
     const asideTopDistance = asideRef.current.getBoundingClientRect().top;
     const asideBottomDistance = asideRef.current.getBoundingClientRect().bottom;
     const blogTopDistance = blogRef.current.getBoundingClientRect().top;
-    console.log({ asideTopDistance });
-    console.log({ asideBottomDistance });
-    console.log({ blogTopDistance });
 
     // normali busena
     // aside sicky
@@ -61,7 +60,7 @@ function App() {
       <Collections />
       <Shop asideStick={asideStick} ref={asideRef} />
       <Blog ref={blogRef} />
-      <Cta />
+      <Cta bg={ctaData.url} title={ctaData.title} subtitle={ctaData.subtitle} />
       <Shipping />
     </Layout>
   );
