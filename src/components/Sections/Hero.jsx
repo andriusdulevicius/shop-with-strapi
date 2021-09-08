@@ -1,16 +1,18 @@
 import css from './Hero.module.css';
 import Button from '../UI/Button';
 import Social from './Social';
+import useStrapi from './../../hooks/useStrapi';
 
 export default function Hero() {
+  const [data] = useStrapi('canvas-hero');
   return (
     <section className={css.hero}>
       <div className={css['center-part']}>
-        <h1>Get the new Mop Dog</h1>
-        <p>You know you want it.</p>
+        <h1>{data.mainTitle}</h1>
+        <p>{data.subtitle}</p>
         <div className={css.controll}>
-          <Button>Shop men</Button>
-          <Button>Shop Woman</Button>
+          <Button>{data.button1}</Button>
+          <Button>{data.button2}</Button>
         </div>
       </div>
       <Social />

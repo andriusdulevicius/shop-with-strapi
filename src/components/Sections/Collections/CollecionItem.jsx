@@ -3,7 +3,7 @@ import Button from '../../UI/Button';
 
 export default function CollecionItem({ item }) {
   // console.log(item.image);
-  const style = { background: `url(${item.image})` };
+  const style = { backgroundImage: `url(${process.env.REACT_APP_STRAPI_URL}${item.image[0].formats.medium.url})` };
   return (
     <div className={css.card} style={style}>
       <h3>{item.discount}% OFF</h3>
