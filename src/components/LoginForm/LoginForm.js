@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './LoginForm.module.css';
 import { useState } from 'react';
+import { postData } from './../../utils/http';
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('paid@member.com');
+  const [password, setPassword] = useState('123456');
   const [err, setErr] = useState('');
 
   const errorList = {
@@ -25,13 +26,14 @@ const LoginForm = () => {
     }
     if (!emailValidationRegex.test(email)) {
       setErr('INVALID_EMAIL');
-      return;
     }
-
-    console.log({ email, password });
+    const response = await postData({ email, password }, 'auth/local');
+    console.log(response);
 
     // localStorage.setItem('Token');
     // localStorage.setItem('Email')
+    setEmail('');
+    setPassword('');
   };
   return (
     <section className={classes.auth}>
