@@ -3,6 +3,7 @@ import Form from './Form';
 
 function Cta({ bg, title, subtitle }) {
   // Cta() gauti ivesties lauko reiskme is <Form />
+
   function handleEmail(emailInput) {
     console.log(emailInput);
   }
@@ -16,7 +17,7 @@ function Cta({ bg, title, subtitle }) {
         muted
         poster='https://assets.codepen.io/6093409/river.jpg'
       >
-        <source src={process.env.REACT_APP_STRAPI_URL + bg || bg} type='video/mp4' />
+        <source src={process.env.REACT_APP_STRAPI_URL + bg?.url} type='video/mp4' />
       </video>
 
       <div className={css.center}>

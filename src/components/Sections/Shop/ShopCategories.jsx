@@ -1,8 +1,7 @@
 import React from 'react';
 import css from './ShopCategories.module.css';
 import useHttp from '../../../hooks/useHttp';
-import { useEffect, useRef, useState } from 'react';
-import reactDom from 'react-dom';
+import { Link } from 'react-router-dom';
 
 function stringToUrl(string) {
   let result = string.replace(' ', '-');
@@ -25,21 +24,18 @@ const ShopCategories = React.forwardRef(({ asideStick }, asideRef) => {
   return (
     <>
       {asideStick && <div className={css.cat}></div>}
-      <aside
-        className={`${css.cat} ${asideStick ? css.stick : ''}`}
-        ref={asideRef}
-      >
-        <a href='/shop/categories/all'>
+      <aside className={`${css.cat} ${asideStick ? css.stick : ''}`} ref={asideRef}>
+        <Link to='/shop/categories/all'>
           <strong> All Collections</strong>
-        </a>
-        <a href='/shop/categories/new'>
+        </Link>
+        <Link to='/shop/categories/new'>
           <strong>New Arrivals</strong>
-        </a>
+        </Link>
         <div className={css.dash}></div>
         {categories.map((name) => (
-          <a key={name} href={`/shop/categories/${stringToUrl(name)}`}>
+          <Link key={name} to={`/shop/categories/${stringToUrl(name)}`}>
             {name}
-          </a>
+          </Link>
         ))}
       </aside>
     </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ShippingCol from './ShippingCol';
+import useStrapi from './../../../hooks/useStrapi';
 
 const ShippingArr = [
   {
@@ -49,6 +50,8 @@ const ShippingSection = styled.section`
 `;
 
 const Shipping = () => {
+  const [ShippingArr] = useStrapi('canvas-shippings');
+  console.log(ShippingArr);
   return (
     <ShippingSection>
       {ShippingArr.map((article, index) => (

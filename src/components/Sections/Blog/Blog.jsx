@@ -5,7 +5,9 @@ import BlogItem from './BlogItem';
 
 // forwardingRef - naudojama kai reikia perduoti DOM nuoroda SUkurtam komponetui
 const Blog = React.forwardRef((props, blogRef) => {
-  const [blogs] = useStrapi('canvas-blogs?_limit=2&_sort=title');
+  const howMany = props.qty ? `&_limit=${props.qty}` : '';
+
+  const [blogs] = useStrapi(`canvas-blogs?_sort=title${howMany}`);
   return (
     <section ref={blogRef} className={`container ${css.blog}`}>
       {blogs.map((b) => (

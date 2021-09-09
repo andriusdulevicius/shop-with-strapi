@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../UI/Icon';
 import css from './Social.module.css';
+import { Link } from 'react-router-dom';
 
 export const social = [
   {
@@ -21,9 +22,9 @@ const Social = () => {
     <div className={css.social}>
       <div className={css.dash}></div>
       {social.map((s) => (
-        <a key={s.link} target='_blank' rel='noreferrer' href={s.link}>
+        <Link key={s.link} target='_blank' rel='noreferrer' to={s.link}>
           <Icon icon={s.icon} />
-        </a>
+        </Link>
       ))}
     </div>
   );

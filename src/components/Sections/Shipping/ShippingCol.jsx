@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../UI/Icon';
 import { social } from './../Social';
+import { Link } from 'react-router-dom';
 
 const Article = styled.article`
   max-width: 22%;
@@ -61,49 +62,51 @@ const Stores = styled.div`
   }
 `;
 
-const ShippingCol = ({ article: { title, text, subtitle, contacts, stores, times } }) => {
+const ShippingCol = ({ article: { title, text, subtitle, contacts, canvas_stores, times } }) => {
   return (
     <Article>
       <Title>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
       {text && <Text>{text}</Text>}
-      {contacts && (
+      {contacts[0] && (
         <Contacts>
           {
             <>
               <ul>
                 <li>
-                  Phone: <span>{contacts.phone}</span>{' '}
+                  Phone: <span>{contacts[0].phone}</span>{' '}
                 </li>
                 <li>
-                  Fax: <span>{contacts.Fax}</span>
+                  Fax: <span>{contacts[0].Fax}</span>
                 </li>
                 <li>
-                  Email: <span>{contacts.Email}</span>
+                  Email: <span>{contacts[0].Email}</span>
                 </li>
               </ul>
               <SocialLinks>
                 {social.map((s) => (
-                  <a key={s.link} target='_blank' rel='noreferrer' href={s.link}>
+                  <Link key={s.link} target='_blank' rel='noreferrer' to={s.link}>
                     <Icon icon={s.icon} />
-                  </a>
+                  </Link>
                 ))}
               </SocialLinks>
             </>
           }
         </Contacts>
       )}
-      {stores && (
+      {canvas_stores && (
         <Stores>
-          {stores.map((store, index) => (
+          {canvas_stores.map((store, index) => (
             <div key={index}>
               <Subtitle>{store.shopTitle}</Subtitle>
               <Text>{store.address}</Text>
             </div>
           ))}
-          <span>
-            <strong>Timing:</strong> {times}
-          </span>
+          {times !== null && (
+            <span>
+              <strong>Timing:</strong> {times}
+            </span>
+          )}
         </Stores>
       )}
     </Article>

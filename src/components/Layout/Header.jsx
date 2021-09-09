@@ -1,8 +1,9 @@
 import css from './Header.module.css';
 import { useState, useEffect } from 'react';
 import useStrapi from './../../hooks/useStrapi';
+import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({ page }) {
   // sekti ar dokumentas yra slenkamas zemyn
   const [navState, setNavState] = useState(false);
   const [links] = useStrapi('canvas-menus');
@@ -24,20 +25,20 @@ export default function Header() {
     }
   }
   return (
-    <header className={`${css.header} ${navState ? css.active : ''}`}>
-      <a className={css.logo} href='/'>
+    <header className={`${css.header} ${navState || page === 'blog' || page === 'login' ? css.active : ''}`}>
+      <Link className={css.logo} to='/'>
         Canvas<strong>Store</strong>
-      </a>
+      </Link>
       <nav className={css['main-nav']}>
         {links.map((l) => (
-          <a key={l.link} href={l.link}>
+          <Link key={l.link} to={l.link}>
             {l.title}
-          </a>
+          </Link>
         ))}
       </nav>
       <nav className={css['side-nav']}>
-        <a href='/'>SignUp/Login</a>
-        <a href='/'>Cart</a>
+        <Link to='/login'>SignUp/Login</Link>
+        <Link to='/'>Cart</Link>
       </nav>
     </header>
   );
