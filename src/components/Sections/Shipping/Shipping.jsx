@@ -51,7 +51,7 @@ const ShippingSection = styled.section`
 
 const Shipping = () => {
   const [ShippingArr] = useStrapi('canvas-shippings');
-  console.log(ShippingArr);
+
   return (
     <ShippingSection>
       {ShippingArr.map((article, index) => (

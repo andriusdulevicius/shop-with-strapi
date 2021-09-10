@@ -1,12 +1,15 @@
 import css from './Header.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import useStrapi from './../../hooks/useStrapi';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../store/AuthProvider';
 
 export default function Header({ page }) {
   // sekti ar dokumentas yra slenkamas zemyn
+  const authCtx = useContext(AuthContext);
   const [navState, setNavState] = useState(false);
   const [links] = useStrapi('canvas-menus');
+  const loggedInUser = authCtx.userEmail;
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -24,8 +27,13 @@ export default function Header({ page }) {
       setNavState(false);
     }
   }
+
+  function handleLogout() {
+    authCtx.logout();
+  }
+
   return (
-    <header className={`${css.header} ${navState || page === 'blog' || page === 'login' ? css.active : ''}`}>
+    <header className={`${css.header} ${navState || page !== 'home' ? css.active : ''}`}>
       <Link className={css.logo} to='/'>
         Canvas<strong>Store</strong>
       </Link>
@@ -37,7 +45,14 @@ export default function Header({ page }) {
         ))}
       </nav>
       <nav className={css['side-nav']}>
-        <Link to='/login'>SignUp/Login</Link>
+        {loggedInUser && <span> Logged in as {loggedInUser}</span>}
+        {loggedInUser ? (
+          <Link onClick={handleLogout} to='/login'>
+            Logout
+          </Link>
+        ) : (
+          <Link to='/login'>SignUp/Login</Link>
+        )}
         <Link to='/'>Cart</Link>
       </nav>
     </header>

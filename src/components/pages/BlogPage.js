@@ -13,6 +13,7 @@ const BlogPage = () => {
         </Route>
         <Route path='/blog'>
           <Blog />
+          <Blog paid />
         </Route>
       </Switch>
     </Layout>

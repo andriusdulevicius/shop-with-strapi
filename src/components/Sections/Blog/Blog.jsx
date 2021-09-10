@@ -5,15 +5,23 @@ import BlogItem from './BlogItem';
 
 // forwardingRef - naudojama kai reikia perduoti DOM nuoroda SUkurtam komponetui
 const Blog = React.forwardRef((props, blogRef) => {
-  const howMany = props.qty ? `&_limit=${props.qty}` : '';
+  function makeCorrectUrl() {
+    const howMany = props.qty ? `&_limit=${props.qty}` : '';
+    const membershipType = props.paid ? 'canvas-paid-blogs' : 'canvas-blogs';
+    const correctUrl = `${membershipType}?_sort=title${howMany}`;
+    return correctUrl;
+  }
+  const [blogs] = useStrapi(makeCorrectUrl());
 
-  const [blogs] = useStrapi(`canvas-blogs?_sort=title${howMany}`);
   return (
-    <section ref={blogRef} className={`container ${css.blog}`}>
-      {blogs.map((b) => (
-        <BlogItem key={b.id} blog={b} />
-      ))}
-    </section>
+    <div className='container'>
+      <h2 className={css.h2}>{props.paid ? 'Checkout our membership blogs' : 'Checkout our blogs'}</h2>
+      <section ref={blogRef} className={`container ${css.blog}`}>
+        {blogs.map((b) => (
+          <BlogItem key={b.id} blog={b} />
+        ))}
+      </section>
+    </div>
   );
 });
 

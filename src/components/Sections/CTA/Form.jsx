@@ -7,7 +7,7 @@ export default function Form({ onEmailSubmit }) {
   // suristi input su valur ir onChange
   function submitHandler(e) {
     e.preventDefault();
-    console.log('siusta');
+
     // atspausdinti ivesta lauka konsolej
     if (input) {
       // console.log(input);

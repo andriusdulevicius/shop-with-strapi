@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import classes from './LoginForm.module.css';
-import { useState } from 'react';
 import { postData } from './../../utils/http';
+import { useHistory } from 'react-router-dom';
+import { AuthContext } from './../../store/AuthProvider';
 
 const LoginForm = () => {
+  const authCtx = useContext(AuthContext);
+  const history = useHistory();
   const [email, setEmail] = useState('paid@member.com');
   const [password, setPassword] = useState('123456');
   const [err, setErr] = useState('');
@@ -27,13 +30,18 @@ const LoginForm = () => {
     if (!emailValidationRegex.test(email)) {
       setErr('INVALID_EMAIL');
     }
-    const response = await postData({ email, password }, 'auth/local');
-    console.log(response);
+    const result = await postData({ email, password }, 'auth/local');
 
-    // localStorage.setItem('Token');
-    // localStorage.setItem('Email')
+    const userData = {
+      email: result.user.email,
+    };
+    console.log('about to login');
+
+    authCtx.login(result.jwt, userData);
+
     setEmail('');
     setPassword('');
+    history.push('/');
   };
   return (
     <section className={classes.auth}>

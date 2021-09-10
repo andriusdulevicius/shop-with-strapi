@@ -24,6 +24,10 @@
 .logo {
   font-size: 1.4rem;
 }
+.header span {
+  font-size: 0.8rem;
+  margin-right: 1rem;
+}
 
 .main-nav a {
   padding: 1rem 0.5rem;

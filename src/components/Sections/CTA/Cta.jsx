@@ -4,9 +4,7 @@ import Form from './Form';
 function Cta({ bg, title, subtitle }) {
   // Cta() gauti ivesties lauko reiskme is <Form />
 
-  function handleEmail(emailInput) {
-    console.log(emailInput);
-  }
+  function handleEmail(emailInput) {}
   return (
     <section className={css.cta}>
       <video
