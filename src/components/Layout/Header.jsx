@@ -40,7 +40,7 @@ export default function Header({ page }) {
       <nav className={css['main-nav']}>
         {links.map((l) => (
           <Link key={l.link} to={l.link}>
-            {l.title}
+            {l.title === 'Members Only' ? (authCtx.token ? l.title : null) : l.title}
           </Link>
         ))}
       </nav>

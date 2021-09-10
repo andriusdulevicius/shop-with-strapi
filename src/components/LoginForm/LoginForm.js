@@ -41,7 +41,7 @@ const LoginForm = () => {
 
     setEmail('');
     setPassword('');
-    history.push('/');
+    history.replace('/');
   };
   return (
     <section className={classes.auth}>

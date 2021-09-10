@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const AuthContext = React.createContext({
   token: localStorage.getItem('Token'),
-  userEmail: localStorage.removeItem('Email'),
+  userEmail: localStorage.getItem('Email'),
   isLoggedIn: false,
   login: () => {},
   logout: () => {},
@@ -24,6 +24,7 @@ export default function AuthProvider({ children }) {
   function logoutHandler() {
     setToken('');
     setUserInfo({});
+    console.log('logged out');
     localStorage.removeItem('Token');
     localStorage.removeItem('Email');
   }

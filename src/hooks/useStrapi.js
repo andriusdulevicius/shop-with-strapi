@@ -1,24 +1,46 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
-export default function useStrapi(urlEnd) {
+export default function useStrapi(urlEnd, token = null) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const headersObj = useMemo(() => {
+    return token
+      ? {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      : null;
+  }, [token]);
+
   useEffect(() => {
-    (async () => {
+    let isCancelled = false;
+    const fetchData = async () => {
       setIsLoading(true);
       try {
-        const { data } = await axios.get(`${process.env.REACT_APP_STRAPI_URL}/${urlEnd}`);
-        setData(data);
+        const { data } = await axios.get(`${process.env.REACT_APP_STRAPI_URL}/${urlEnd}`, headersObj);
+        if (!isCancelled) {
+          setData(data);
+        }
       } catch (error) {
-        setError('Something went wrong');
+        if (!isCancelled) {
+          setError('Something went wrong');
+        }
       } finally {
-        setIsLoading(false);
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
       }
-    })();
-  }, [urlEnd]);
+    };
 
+    fetchData();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [urlEnd, headersObj]);
   return [data, isLoading, error];
 }

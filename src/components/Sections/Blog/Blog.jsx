@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useStrapi from '../../../hooks/useStrapi';
 import css from './Blog.module.css';
 import BlogItem from './BlogItem';
+import { AuthContext } from './../../../store/AuthProvider';
 
 // forwardingRef - naudojama kai reikia perduoti DOM nuoroda SUkurtam komponetui
 const Blog = React.forwardRef((props, blogRef) => {
@@ -11,7 +12,10 @@ const Blog = React.forwardRef((props, blogRef) => {
     const correctUrl = `${membershipType}?_sort=title${howMany}`;
     return correctUrl;
   }
-  const [blogs] = useStrapi(makeCorrectUrl());
+  const authCtx = useContext(AuthContext);
+  const token = props.paid ? authCtx.token : null;
+
+  const [blogs] = useStrapi(makeCorrectUrl(), token);
 
   return (
     <div className='container'>
