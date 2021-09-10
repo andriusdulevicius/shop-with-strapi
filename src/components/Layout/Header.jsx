@@ -11,6 +11,9 @@ export default function Header({ page }) {
   const [links] = useStrapi('canvas-menus');
   const loggedInUser = authCtx.userEmail;
 
+  // const filteredLinks = links.filter((l) => l.id !== 8);
+  // const finalLinksArr = authCtx.token ? links : filteredLinks;
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -40,7 +43,7 @@ export default function Header({ page }) {
       <nav className={css['main-nav']}>
         {links.map((l) => (
           <Link key={l.link} to={l.link}>
-            {l.title === 'Members Only' ? (authCtx.token ? l.title : null) : l.title}
+            {l.title}
           </Link>
         ))}
       </nav>

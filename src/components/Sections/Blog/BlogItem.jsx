@@ -5,6 +5,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 export default function BlogItem({ blog: b, singlePage }) {
   const match = useRouteMatch();
 
+  const backPath = match.url.slice(0, match.url.lastIndexOf('/'));
   return (
     <article className={`${css['blog-item']} ${singlePage ? css.singlePage : ''}`}>
       {singlePage && <h1 className={css['main-title']}>{b.title}</h1>}
@@ -25,9 +26,9 @@ export default function BlogItem({ blog: b, singlePage }) {
       )}
       {/* match.url - grazina dabartini url adresa */}
       {singlePage ? (
-        <Link to={match.url}>Go back</Link>
+        <Link to={backPath}>Go back</Link>
       ) : (
-        <Link to={`${match.url}/${b.id}`}>
+        <Link to={`${match.path}/${b.id}`}>
           View details <Icon icon='long-arrow-right' />
         </Link>
       )}

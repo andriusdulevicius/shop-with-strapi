@@ -5,7 +5,7 @@ import Shop from './../Sections/Shop/Shop';
 import Collections from './../Sections/Collections/Collections';
 import useStrapi from './../../hooks/useStrapi';
 import Blog from './../Sections/Blog/Blog';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Layout from './../Layout/Layout';
 
 const MainPage = () => {
@@ -13,7 +13,7 @@ const MainPage = () => {
   const blogRef = useRef();
   const asideRef = useRef();
 
-  const [asideStick, setAsideStick] = useState(false);
+  // const [asideStick, setAsideStick] = useState(false);
   // normali busena
   // aside sicky
   // nuimti nuo aside stiky esant zemiau
@@ -50,7 +50,7 @@ const MainPage = () => {
     <Layout>
       <Hero />
       <Collections />
-      <Shop asideStick={asideStick} ref={asideRef} />
+      <Shop ref={asideRef} />
       <Blog ref={blogRef} qty='2' />
       <Cta bg={ctaData.bg} title={ctaData.title} subtitle={ctaData.subtitle} />
       <Shipping />

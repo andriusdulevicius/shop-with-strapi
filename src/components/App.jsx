@@ -7,6 +7,8 @@ import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import AuthProvider from './../store/AuthProvider';
 import MembersOnlyPage from './pages/MembersOnlyPage';
+import SignInPage from './pages/SignInPage';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
   return (
@@ -22,9 +24,12 @@ function App() {
           <Route path='/login'>
             <LoginPage />
           </Route>
-          <Route path='/members-only'>
-            <MembersOnlyPage />
+          <Route path='/sign-in'>
+            <SignInPage />
           </Route>
+          <ProtectedRoute path='/members-only'>
+            <MembersOnlyPage />
+          </ProtectedRoute>
         </Switch>
       </AuthProvider>
     </BrowserRouter>

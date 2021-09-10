@@ -20,17 +20,15 @@ export default function useStrapi(urlEnd, token = null) {
     let isCancelled = false;
     const fetchData = async () => {
       setIsLoading(true);
-      try {
-        const { data } = await axios.get(`${process.env.REACT_APP_STRAPI_URL}/${urlEnd}`, headersObj);
-        if (!isCancelled) {
+
+      if (!isCancelled) {
+        try {
+          const { data } = await axios.get(`${process.env.REACT_APP_STRAPI_URL}/${urlEnd}`, headersObj);
+
           setData(data);
-        }
-      } catch (error) {
-        if (!isCancelled) {
+        } catch (error) {
           setError('Something went wrong');
-        }
-      } finally {
-        if (!isCancelled) {
+        } finally {
           setIsLoading(false);
         }
       }

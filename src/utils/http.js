@@ -2,18 +2,10 @@ import axios from 'axios';
 
 export const postData = async (dataToSend, urlEnd) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_STRAPI_URL}/${urlEnd}`,
-      {
-        identifier: dataToSend.email,
-        password: dataToSend.password,
-      }
-      // {
-      //   headers:{
-      //     Authorization: 'Bearer token'
-      //   }
-      // }
-    );
+    const response = await axios.post(`${process.env.REACT_APP_STRAPI_URL}/${urlEnd}`, {
+      identifier: dataToSend.email,
+      password: dataToSend.password,
+    });
 
     return response.data;
   } catch (error) {
