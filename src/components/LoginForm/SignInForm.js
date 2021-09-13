@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import classes from './LoginForm.module.css';
-
 import { useHistory, Link } from 'react-router-dom';
+import { postNewData } from './../../utils/http';
+import useAuthCtx from './../../hooks/useAuthCtx';
 
 const SignInForm = () => {
+  const authCtx = useAuthCtx();
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,14 +37,17 @@ const SignInForm = () => {
       setErr('DONT_MATCH');
       return;
     }
-    // const result = await postData({ email, password, password2 }, 'auth/local');
+    const username = email.slice(0, email.indexOf('@'));
+    console.log({ username, email, password });
 
-    // const userData = {
-    //   email: result.user.email,
-    // };
-    // console.log('about to create account');
+    const result = await postNewData({ username, email, password }, 'auth/local/register');
 
-    // authCtx.login(result.jwt, userData);
+    console.log('about to create account', result);
+    const userData = {
+      email: result.user.email,
+    };
+
+    authCtx.login(result.jwt, userData);
 
     setEmail('');
     setPassword('');
@@ -51,7 +56,7 @@ const SignInForm = () => {
   };
   return (
     <section className={classes.auth}>
-      <h2>Sign In Form</h2>
+      <h2>Sign Up Form</h2>
       <form>
         <div className={classes.control}>
           <input type='email' placeholder='Username' onChange={(e) => setEmail(e.target.value)} value={email} />
@@ -75,7 +80,7 @@ const SignInForm = () => {
         {err !== '' && <span className={classes['error-msg']}>{errorList[err]}</span>}
         <button onClick={signInHandler}>CREATE ACCOUNT</button>
       </form>
-      <Link to='/login'> Back to login! </Link>
+      <Link to='/login'> Have an account? Go back to login! </Link>
     </section>
   );
 };

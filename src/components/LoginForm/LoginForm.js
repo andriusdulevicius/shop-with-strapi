@@ -69,7 +69,7 @@ const LoginForm = () => {
         {err !== '' && <span className={classes['error-msg']}>{errorList[err]}</span>}
         <button onClick={loginHandler}>LOGIN</button>
       </form>
-      <Link to='/sign-in'> Dont have an account ? Sign in! </Link>
+      <Link to='/sign-in'> Dont have an account ? Sign up! </Link>
     </section>
   );
 };

@@ -22,7 +22,7 @@ const Blog = React.forwardRef((props, blogRef) => {
       <h2 className={css.h2}>{props.paid ? 'Checkout our membership blogs' : 'Checkout our blogs'}</h2>
       <section ref={blogRef} className={`container ${css.blog}`}>
         {blogs.map((b) => (
-          <BlogItem key={b.id} blog={b} />
+          <BlogItem key={b.id} blog={b} paid={props.paid} membersOnly={props.membersOnly} />
         ))}
       </section>
     </div>

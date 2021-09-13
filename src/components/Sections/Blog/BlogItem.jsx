@@ -2,10 +2,11 @@ import css from './BlogItem.module.css';
 import Icon from '../../UI/Icon';
 import { Link, useRouteMatch } from 'react-router-dom';
 
-export default function BlogItem({ blog: b, singlePage }) {
+export default function BlogItem({ blog: b, singlePage, paid, membersOnly }) {
   const match = useRouteMatch();
 
-  const backPath = match.url.slice(0, match.url.lastIndexOf('/'));
+  let backPath = membersOnly ? match.url.slice(0, match.url.lastIndexOf('/')) : `/blog`;
+  let oneArticleUrl = paid ? `members-only/${b.id}` : `${match.path}/${b.id}`;
   return (
     <article className={`${css['blog-item']} ${singlePage ? css.singlePage : ''}`}>
       {singlePage && <h1 className={css['main-title']}>{b.title}</h1>}
@@ -28,7 +29,7 @@ export default function BlogItem({ blog: b, singlePage }) {
       {singlePage ? (
         <Link to={backPath}>Go back</Link>
       ) : (
-        <Link to={`${match.path}/${b.id}`}>
+        <Link to={oneArticleUrl}>
           View details <Icon icon='long-arrow-right' />
         </Link>
       )}
